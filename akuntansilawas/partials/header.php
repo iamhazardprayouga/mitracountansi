@@ -26,23 +26,11 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
   <!-- Animations -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
   <style>
     body {
       background: #f7f9fc;
       font-family: 'Poppins', sans-serif;
     }
-    .navbar {
-      background: #0f172a;
-    }
-    .navbar-brand {
-      color: #fff !important;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-    /* Sidebar */
     .sidebar {
       height: 100vh;
       background: rgba(15, 23, 42, 0.95);
@@ -50,9 +38,8 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
       position: fixed;
       top: 0; left: 0;
       width: 250px;
-      padding-top: 70px;
+      padding-top: 60px;
       transition: all 0.3s ease;
-      z-index: 1030;
     }
     .sidebar a {
       color: #fff;
@@ -60,36 +47,31 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
       padding: 12px 20px;
       text-decoration: none;
       transition: 0.3s;
-      font-weight: 500;
     }
     .sidebar a:hover {
       background: rgba(255,255,255,0.1);
       padding-left: 30px;
-      color: #38bdf8;
     }
-    /* Content */
     .content {
       margin-left: 250px;
       padding: 30px;
       margin-top: 60px;
-      transition: margin-left 0.3s ease;
     }
-    /* Card */
+    .navbar {
+      background: #0f172a;
+    }
+    .navbar-brand {
+      color: #fff !important;
+      font-weight: 600;
+    }
     .card {
       border: none;
       border-radius: 20px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease;
     }
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-    }
-    /* Sidebar toggle */
-    @media (max-width: 991px) {
-      .sidebar { left: -250px; }
-      .sidebar.active { left: 0; }
-      .content { margin-left: 0; }
     }
   </style>
 </head>

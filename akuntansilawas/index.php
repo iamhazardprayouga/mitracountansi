@@ -70,51 +70,52 @@
     <!-- Bagian Selamat Datang -->
     <div class="text-center my-5" data-aos="fade-up" data-aos-duration="1000">
       <h1 class="fw-bold text-gradient mb-3">✨ Selamat Datang di <span class="text-primary">MitraCounting</span></h1>
-      <p class="lead text-muted">Sistem Informasi Akuntansi Mitraku Cibuyur Warungpring </p>
+      <p class="lead text-muted">Sistem Informasi Akuntansi modern untuk mengelola keuangan dengan lebih mudah, cepat, dan akurat.</p>
     </div>
 
-    <!-- Dashboard Card -->
-    <div class="row g-4">
-      <!-- Card Akun -->
-      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
-        <a href="akun.php" class="text-decoration-none">
-          <div class="card p-4 text-center dashboard-card card-equal h-100">
-            <i class="fa fa-book fa-3x mb-3 text-primary"></i>
-            <h5 class="text-dark">Akun</h5>
-            <p class="text-muted">Kelola daftar akun akuntansi dengan mudah.</p>
-          </div>
-        </a>
+   <!-- Dashboard Card -->
+<div class="row g-4">
+  <!-- Card Akun -->
+  <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+    <a href="akun.php" class="text-decoration-none">
+      <div class="card p-4 text-center dashboard-card card-equal h-100">
+        <i class="fa fa-book fa-3x mb-3 text-primary"></i>
+        <h5 class="text-dark">Akun</h5>
+        <p class="text-muted">Kelola daftar akun akuntansi dengan mudah.</p>
       </div>
+    </a>
+  </div>
 
-      <!-- Card Jurnal -->
-      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="150">
-        <a href="jurnalumum.php" class="text-decoration-none">
-          <div class="card p-4 text-center dashboard-card card-equal h-100">
-            <i class="fa fa-file-alt fa-3x mb-3 text-success"></i>
-            <h5 class="text-dark">Jurnal Umum</h5>
-            <p class="text-muted">Catat transaksi harian perusahaan.</p>
-          </div>
-        </a>
+  <!-- Card Jurnal -->
+  <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="150">
+    <a href="jurnalumum.php" class="text-decoration-none">
+      <div class="card p-4 text-center dashboard-card card-equal h-100">
+        <i class="fa fa-file-alt fa-3x mb-3 text-success"></i>
+        <h5 class="text-dark">Jurnal Umum</h5>
+        <p class="text-muted">Catat transaksi harian perusahaan.</p>
       </div>
+    </a>
+  </div>
 
-      <!-- Card Neraca -->
-      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
-        <a href="neraca.php" class="text-decoration-none">
-          <div class="card p-4 text-center dashboard-card card-equal h-100">
-            <i class="fa fa-balance-scale fa-3x mb-3 text-danger"></i>
-            <h5 class="text-dark">Neraca</h5>
-            <p class="text-muted">Lihat posisi keuangan perusahaan dengan jelas.</p>
-          </div>
-        </a>
-      </div>
+ <!-- Card Neraca -->
+<div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
+  <a href="neraca.php" class="text-decoration-none">
+    <div class="card p-4 text-center dashboard-card card-equal h-100">
+      <i class="fa fa-balance-scale fa-3x mb-3 text-danger"></i>
+      <h5 class="text-dark">Neraca</h5>
+      <p class="text-muted">Lihat posisi keuangan perusahaan dengan jelas.</p>
     </div>
+  </a>
+</div>
+
+
 
     <!-- Tambahan Informasi / Grafik -->
     <div class="info-section">
       <div class="row">
         <!-- Info Singkat -->
         <div class="col-md-6" data-aos="fade-right" data-aos-duration="1000">
-          <div class="card p-4 dashboard-card h-100">
+          <div class="card p-4 dashboard-card">
             <h5 class="fw-bold mb-3">📊 Informasi Keuangan</h5>
             <p class="text-muted">MitraCounting membantu Anda memantau kondisi keuangan perusahaan dengan akurat. 
             Data transaksi, laporan, dan analisis keuangan selalu up-to-date.</p>
@@ -123,13 +124,14 @@
 
         <!-- Grafik -->
         <div class="col-md-6" data-aos="fade-left" data-aos-duration="1000">
-          <div class="card p-4 dashboard-card h-100">
+          <div class="card p-4 dashboard-card">
             <h5 class="fw-bold mb-3">📈 Grafik Transaksi</h5>
             <canvas id="grafikTransaksi" height="200"></canvas>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </div>
 

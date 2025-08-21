@@ -35,104 +35,64 @@ $akun = mysqli_query($config->koneksi(), "SELECT * FROM tb_akun LIMIT $start, $l
       <h2 class="fw-bold text-dark m-0">Daftar Akun Akuntansi</h2>
     </div>
 
-    <div class="row g-4">
-      <!-- Form Tambah Akun -->
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="card p-4 h-100">
-          <h5 class="fw-bold text-secondary mb-3">Tambah Akun Baru</h5>
-          <form method="POST" action="pro_tambah_akun.php">
-            <div class="mb-3">
-              <label class="form-label fw-semibold">Nomor / Kode Akun</label>
-              <input type="text" name="kode" required class="form-control rounded-3 shadow-sm">
-            </div>
-            <div class="mb-3">
-              <label class="form-label fw-semibold">Nama Akun</label>
-              <input type="text" name="nama_akun" required class="form-control rounded-3 shadow-sm">
-            </div>
-            <div class="mb-3">
-              <label class="form-label fw-semibold">Posisi Awal Saldo</label>
-              <select name="kategori" class="form-select rounded-3 shadow-sm">
-                <option value="HL">Debet</option>
-                <option value="HT">Kredit</option>
-              </select>
-            </div>
-            <button type="submit" class="btn btn-finance w-100 py-2 rounded-3">
-              <i class="fa fa-plus-circle me-2"></i> Tambah Akun
-            </button>
-          </form>
-        </div>
-      </div>
-
-      <!-- Tabel Daftar Akun -->
-      <div class="col-md-8" data-aos="fade-up" data-aos-delay="200">
-        <div class="card p-4">
-          <h5 class="fw-bold text-secondary mb-3">Chart of Accounts</h5>
-          <div class="table-responsive">
-            <table class="table table-hover align-middle">
-              <thead class="table-gradient text-white text-center">
-                <tr>
-                  <th>No</th>
-                  <th>Nama Akun</th>
-                  <th>Kode</th>
-                  <th>Posisi</th>
-                  <th>Aksi</th>
-                </tr>
-              </thead>
-              <tbody>
-              <?php
-              $no = $start + 1;
-              while ($data_akun = mysqli_fetch_array($akun)) {
-                  $pos = ($data_akun['kategori'] == "HL") ? "Debet" : "Kredit";
-                  echo "
-                  <tr data-aos='fade-up' data-aos-delay='".($no*50)."'>
-                    <td class='text-center'>$no</td>
-                    <td class='fw-semibold'>$data_akun[nama_akun]</td>
-                    <td class='text-center'>
-                      <span class='badge bg-primary px-3'>$data_akun[kode]</span>
-                    </td>
-                    <td class='text-center'>
-                      <span class='badge ".($pos=='Debet'?'bg-success':'bg-danger')."'>$pos</span>
-                    </td>
-                    <td class='text-center'>
-                      <a href='editakun.php?id=$data_akun[id]' class='btn btn-sm btn-outline-warning rounded-3 me-1'>
-                        <i class='fa fa-edit'></i>
-                      </a>
-                      <a href='hapus_akun.php?id=$data_akun[id]' class='btn btn-sm btn-outline-danger rounded-3' onclick=\"return confirm('Hapus akun ini?')\">
-                        <i class='fa fa-trash'></i>
-                      </a>
-                    </td>
-                  </tr>";
-                  $no++;
-              }
-              ?>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Pagination -->
-          <nav data-aos="fade-up" data-aos-delay="300">
-            <ul class="pagination justify-content-end mt-3">
-              <?php if ($page > 1): ?>
-                <li class="page-item"><a class="page-link" href="?page=<?= $page-1 ?>">« Prev</a></li>
-              <?php endif; ?>
-
-              <?php for ($i = 1; $i <= $total_page; $i++): ?>
-                <li class="page-item <?= ($i == $page) ? 'active' : '' ?>">
-                  <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
-                </li>
-              <?php endfor; ?>
-
-              <?php if ($page < $total_page): ?>
-                <li class="page-item"><a class="page-link" href="?page=<?= $page+1 ?>">Next »</a></li>
-              <?php endif; ?>
-            </ul>
-          </nav>
-        </div>
-      </div>
+ <!-- Tabel Daftar Akun -->
+<div class="col-12" data-aos="fade-up" data-aos-delay="200">
+  <div class="card p-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="fw-bold text-secondary">Chart of Accounts</h5>
+      <a href="tambah_akun.php" class="btn btn-finance rounded-3 shadow-sm px-4">
+        <i class="fa fa-plus-circle me-2"></i> Tambah Akun
+      </a>
     </div>
 
+    <!-- Scrollable Table -->
+    <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+      <table class="table table-hover align-middle">
+        <thead class="table-gradient text-white text-center sticky-top">
+          <tr>
+            <th>No</th>
+            <th>Nama Akun</th>
+            <th>Kode</th>
+            <th>Posisi</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+        <?php
+        $no = 1;
+        $akun = mysqli_query($config->koneksi(), "SELECT * FROM tb_akun ORDER BY id ASC"); 
+        while ($data_akun = mysqli_fetch_array($akun)) {
+            $pos = ($data_akun['kategori'] == "HL") ? "Debet" : "Kredit";
+            echo "
+            <tr>
+              <td class='text-center'>$no</td>
+              <td class='fw-semibold'>$data_akun[nama_akun]</td>
+              <td class='text-center'>
+                <span class='badge bg-primary px-3'>$data_akun[kode]</span>
+              </td>
+              <td class='text-center'>
+                <span class='badge ".($pos=='Debet'?'bg-success':'bg-danger')."'>$pos</span>
+              </td>
+              <td class='text-center'>
+                <a href='editakun.php?id=$data_akun[id]' class='btn btn-sm btn-outline-warning rounded-3 me-1'>
+                  <i class='fa fa-edit'></i>
+                </a>
+                <a href='hapus_akun.php?id=$data_akun[id]' class='btn btn-sm btn-outline-danger rounded-3' onclick=\"return confirm('Hapus akun ini?')\">
+                  <i class='fa fa-trash'></i>
+                </a>
+              </td>
+            </tr>";
+            $no++;
+        }
+        ?>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
+
+
+ 
 
 <!-- Style Khusus -->
 <style>

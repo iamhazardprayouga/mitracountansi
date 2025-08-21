@@ -1,4 +1,4 @@
-<div class="sidebar" id="sidebar" data-aos="fade-right">
+<div class="sidebar">
   <a href="index.php"><i class="fa fa-home me-2"></i> Home</a>
   <a href="akun.php"><i class="fa fa-book me-2"></i> Akun</a>
   <a href="jurnalumum.php"><i class="fa fa-file-alt me-2"></i> Jurnal Umum</a>

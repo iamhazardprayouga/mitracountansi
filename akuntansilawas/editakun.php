@@ -62,8 +62,7 @@ if ((isset($_GET['doLogout'])) && ($_GET['doLogout'] == "true")) {
               <!-- Kode Akun -->
               <div class="mb-3">
                 <label class="form-label fw-semibold">Nomor/Kode Akun</label>
-                <input type="text" value="<?php echo $data_akun['kode']; ?>" class="form-control rounded-pill shadow-sm" readonly>
-                <input type="hidden" name="kode" value="<?php echo $data_akun['kode']; ?>">
+                <input type="text" name="kode" value="<?php echo $data_akun['kode']; ?>" class="form-control rounded-pill shadow-sm" disabled>
               </div>
 
               <!-- Nama Akun -->

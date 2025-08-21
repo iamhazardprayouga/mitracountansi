@@ -159,39 +159,17 @@ if ($tgl_awal && $tgl_akhir) {
                         </thead>
                         <tbody>
                             <?php if (count($laba_harian) > 0): ?>
-                                <?php 
-                                    $total_pendapatan = 0;
-                                    $total_biaya = 0;
-                                    $total_laba = 0;
-                                ?>
                                 <?php foreach ($laba_harian as $row): ?>
-                                    <?php 
-                                        $total_pendapatan += $row['pendapatan'];
-                                        $total_biaya += $row['biaya'];
-                                        $total_laba += $row['laba'];
-                                    ?>
-                                    <tr>
-                                        <td><?= date("d M Y", strtotime($row['tgl'])) ?></td>
-                                        <td>Rp <?= number_format($row['pendapatan'], 0, ",", ".") ?></td>
-                                        <td>Rp <?= number_format($row['biaya'], 0, ",", ".") ?></td>
-                                        <td class="<?= $row['laba'] >= 0 ? 'text-success fw-bold' : 'text-danger fw-bold' ?>">
-                                            Rp <?= number_format(abs($row['laba']), 0, ",", ".") ?> 
-                                            <?= $row['laba'] >= 0 ? '<i class="fas fa-arrow-up ms-1"></i>' : '<i class="fas fa-arrow-down ms-1"></i>' ?>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-
-                                <!-- 🔥 TOTAL KESELURUHAN -->
-                                <tr class="table-secondary fw-bold">
-                                    <td>Total</td>
-                                    <td>Rp <?= number_format($total_pendapatan, 0, ",", ".") ?></td>
-                                    <td>Rp <?= number_format($total_biaya, 0, ",", ".") ?></td>
-                                    <td class="<?= $total_laba >= 0 ? 'text-success' : 'text-danger' ?>">
-                                        Rp <?= number_format(abs($total_laba), 0, ",", ".") ?> 
-                                        <?= $total_laba >= 0 ? '<i class="fas fa-arrow-up ms-1"></i>' : '<i class="fas fa-arrow-down ms-1"></i>' ?>
+                                <tr>
+                                    <td><?= date("d M Y", strtotime($row['tgl'])) ?></td>
+                                    <td>Rp <?= number_format($row['pendapatan'], 0, ",", ".") ?></td>
+                                    <td>Rp <?= number_format($row['biaya'], 0, ",", ".") ?></td>
+                                    <td class="<?= $row['laba'] >= 0 ? 'text-success fw-bold' : 'text-danger fw-bold' ?>">
+                                        Rp <?= number_format(abs($row['laba']), 0, ",", ".") ?> 
+                                        <?= $row['laba'] >= 0 ? '<i class="fas fa-arrow-up ms-1"></i>' : '<i class="fas fa-arrow-down ms-1"></i>' ?>
                                     </td>
                                 </tr>
-
+                                <?php endforeach; ?>
                             <?php else: ?>
                                 <tr>
                                     <td colspan="4" class="text-center text-muted">
